@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ការទូទាត់ប្រាក់ប្រកបដោយសុវត្ថិភាព</title>
+    
+    <!-- ================================================================ -->
+    <!-- OPEN GRAPH & TWITTER CARDS FOR TELEGRAM/MESSENGER EMBEDS         -->
+    <!-- ================================================================ -->
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="ការទូទាត់ប្រាក់ប្រកបដោយសុវត្ថិភាព">
+    <meta name="description" content="ទូទាត់ប្រាក់យ៉ាងងាយស្រួល និងមានសុវត្ថិភាពខ្ពស់តាមរយៈ ABA Mobile និង ACLEDA Mobile។">
+
+    <!-- Open Graph / Facebook / Messenger -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hangdigital.store/payment"> <!-- ⚠️ REPLACE WITH YOUR ACTUAL URL -->
+    <meta property="og:title" content="ការទូទាត់ប្រាក់ប្រកបដោយសុវត្ថិភាព">
+    <meta property="og:description" content="ទូទាត់ប្រាក់យ៉ាងងាយស្រួល និងមានសុវត្ថិភាពខ្ពស់តាមរយៈ ABA Mobile និង ACLEDA Mobile។">
+    <meta property="og:image" content="https://hangdigital.store/payment/aba.jpg"> <!-- ⚠️ REPLACE WITH YOUR PREVIEW IMAGE URL -->
+
+    <!-- Twitter / Telegram -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hangdigital.store/payment"> <!-- ⚠️ REPLACE WITH YOUR ACTUAL URL -->
+    <meta property="twitter:title" content="ការទូទាត់ប្រាក់ប្រកបដោយសុវត្ថិភាព">
+    <meta property="twitter:description" content="ទូទាត់ប្រាក់យ៉ាងងាយស្រួល និងមានសុវត្ថិភាពខ្ពស់តាមរយៈ ABA Mobile និង ACLEDA Mobile។">
+    <meta property="twitter:image" content="https://hangdigital.store/payment/aba.jpg"> <!-- ⚠️ REPLACE WITH YOUR PREVIEW IMAGE URL -->
+
+    <!-- ================================================================ -->
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        img-src 'self' data: https://upload.wikimedia.org;
+        connect-src 'none';
+        frame-src 'none';
+        form-action 'none';
+        base-uri 'none';
+    ">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
+    
+    <!-- Google Khmer Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" 
+          rel="stylesheet">
+
+    <style>
+        /* ===== RESET & THEME ===== */
+        :root {
+            --primary-purple: #7b2cbf;
+            --accent-purple: #a970ff;
+            --dark-bg: #0f0518;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-main: #ffffff;
+            --text-light: #c2b6d8;
+            --acleda-glow: #c39a3f;
+            --aba-glow: #00b4d8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kantumruy Pro', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(ellipse at bottom, #2d1045 0%, var(--dark-bg) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            /* Disable scrolling for PC */
+            overflow: hidden; 
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* ===== STARS ===== */
+        #stars, #stars2, #stars3 {
+            position: fixed; 
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+
+        @keyframes animStar {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-2000px); }
+        }
+
+        .star-layer-1 { animation: animStar 50s linear infinite; }
+        .star-layer-2 { animation: animStar 100s linear infinite; }
+        .star-layer-3 { animation: animStar 150s linear infinite; }
+
+        /* ===== MAIN CONTAINER ===== */
+        .checkout-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 45px 35px;
+            border-radius: 28px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(123, 44, 191, 0.25);
+            max-width: 820px;
+            width: 100%;
+            text-align: center;
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ===== LOGO ===== */
+        .brand-logo-wrapper {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .brand-logo {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-purple) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: floatLogo 3.5s ease-in-out infinite, pulseGlow 2.5s infinite alternate;
+        }
+
+        @keyframes floatLogo {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 20px rgba(169, 112, 255, 0.4); }
+            100% { box-shadow: 0 0 40px rgba(169, 112, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5); }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            margin-bottom: 35px;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .subtitle i {
+            color: var(--accent-purple);
+            margin-right: 6px;
+        }
+
+        /* ===== PAYMENT CARDS ===== */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 35px 25px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Updated Card Icon for Images */
+        .card-icon {
+            width: 75px;
+            height: 75px;
+            background: #ffffff; /* White background makes logos pop */
+            border-radius: 18px; /* App icon shape */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 8px; /* Breathing room for the logo */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures logo fits perfectly without stretching */
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.15) translateY(-5px);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 90%;
+            margin-top: auto;
+        }
+
+        /* ACLEDA */
+        .card.acleda:hover {
+            border-color: var(--acleda-glow);
+            box-shadow: 0 10px 30px rgba(195, 154, 63, 0.25);
+        }
+        .card.acleda:hover .card-icon {
+            box-shadow: 0 10px 25px rgba(195, 154, 63, 0.4);
+        }
+        .card.acleda .btn {
+            background: rgba(195, 154, 63, 0.2);
+            border: 1px solid var(--acleda-glow);
+            color: var(--acleda-glow);
+        }
+        .card.acleda:hover .btn {
+            background: var(--acleda-glow);
+            color: #000;
+            box-shadow: 0 0 18px var(--acleda-glow);
+        }
+
+        /* ABA */
+        .card.aba:hover {
+            border-color: var(--aba-glow);
+            box-shadow: 0 10px 30px rgba(0, 180, 216, 0.25);
+        }
+        .card.aba:hover .card-icon {
+            box-shadow: 0 10px 25px rgba(0, 180, 216, 0.4);
+        }
+        .card.aba .btn {
+            background: rgba(0, 180, 216, 0.2);
+            border: 1px solid var(--aba-glow);
+            color: var(--aba-glow);
+        }
+        .card.aba:hover .btn {
+            background: var(--aba-glow);
+            color: #000;
+            box-shadow: 0 0 18px var(--aba-glow);
+        }
+
+        /* ===== LOADING OVERLAY ===== */
+        .loader-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 5, 24, 0.92);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loader-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top: 4px solid var(--primary-purple);
+            border-right: 4px solid var(--accent-purple);
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== RESPONSIVE (MOBILE FIXES) ===== */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto; /* អនុញ្ញាតឲ្យអូសបានលើទូរស័ព្ទ */
+                align-items: flex-start; /* ការពារកុំឲ្យបាត់ផ្នែកខាងលើពេលអូស */
+                padding: 40px 20px;
+            }
+            .checkout-container { 
+                padding: 35px 20px; 
+                margin: auto; /* ជួយឲ្យនៅកណ្តាលនៅពេល Content ខ្លីជាងអេក្រង់ */
+            }
+            .payment-methods { 
+                grid-template-columns: 1fr; 
+            }
+            h1 { 
+                font-size: 24px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="stars" class="star-layer-1"></div>
+    <div id="stars2" class="star-layer-2"></div>
+    <div id="stars3" class="star-layer-3"></div>
+
+    <div class="checkout-container">
+        
+        <div class="brand-logo-wrapper">
+            <div class="brand-logo">
+                <i class="fas fa-wallet"></i>
+            </div>
+        </div>
+
+        <h1>ជ្រើសរើសវិធីទូទាត់ប្រាក់</h1>
+        <p class="subtitle"><i class="fas fa-shield-halved"></i> ការទូទាត់ប្រកបដោយសុវត្ថិភាពខ្ពស់</p>
+        
+        <div class="payment-methods">
+            
+            <div class="card acleda" data-method="acleda">
+                <!-- Replaced Icon with Image -->
+                <div class="card-icon">
+                    <img src="./ac.png" alt="ACLEDA Logo">
+                </div>
+                <h2>ធនាគារ អេស៊ីលីដា</h2>
+                <p>ទូទាត់ប្រាក់យ៉ាងមានសុវត្ថិភាពតាមកម្មវិធី ACLEDA Mobile</p>
+                <button class="btn">ទូទាត់តាម ACLEDA</button>
+            </div>
+
+            <div class="card aba" data-method="aba">
+                <!-- Replaced Icon with Image -->
+                <div class="card-icon">
+                    <img src="./aba.png" alt="ABA Logo">
+                </div>
+                <h2>ABA PAYWAY</h2>
+                <p>ទូទាត់ប្រាក់បានរហ័ស និងងាយស្រួលតាមកម្មវិធី ABA Mobile</p>
+                <button class="btn">ទូទាត់តាម ABA</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="loader-overlay" id="loader">
+        <div class="spinner"></div>
+        <h2 style="font-size: 22px;">កំពុងភ្ជាប់ទៅកាន់ច្រកទូទាត់ប្រាក់...</h2>
+        <p style="color: var(--text-light); margin-top: 8px;">សូមរង់ចាំមួយភ្លែត ប្រព័ន្ធកំពុងបញ្ជូនលោកអ្នកទៅកាន់ទំព័រទូទាត់</p>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ================================================================
+            // CONFIGURATION — RUNTIME ENCRYPTION
+            // ================================================================
+            var CONFIG = (function() {
+                var raw = {
+                    acleda: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu5ckLzMHjaSki6Ru0bsOyNK+ylPBgZ0sHH6BeGUscKoEG5m8pMfHnlajwn/tnWz7cIRxijb7QzFOP4bWhLTYnnsavmbbM+nP4i7YfUBjfN3S5bS9Ax1+vAhAfOVFcjgQgA/x8pVOnEVNNWAMPR7y7/k4aLPArB7aDf1e5BxIY/xAWErZHymbV89NhaK2pM7UXxx6hmS+9ZffyFfeHH7CtJs=&key=khqr",
+                    aba: "https://pay.ababank.com/oRF8/ram86b1g"
+                };
+
+                var key = [
+                    0x3A, 0x7F, 0xC2, 0x9B, 0x4E, 0x11, 0xD5, 0x68,
+                    0x8F, 0x24, 0xE3, 0x5C, 0x79, 0xA0, 0x1D, 0xF6
+                ];
+
+                function xorBytes(str) {
+                    var bytes = [];
+                    for (var i = 0; i < str.length; i++) {
+                        bytes.push(str.charCodeAt(i) ^ key[i % key.length]);
+                    }
+                    return bytes;
+                }
+
+                function toBase64(byteArray) {
+                    var binary = '';
+                    for (var i = 0; i < byteArray.length; i++) {
+                        binary += String.fromCharCode(byteArray[i]);
+                    }
+                    return btoa(binary);
+                }
+
+                function encrypt(plain) {
+                    return toBase64(xorBytes(plain));
+                }
+
+                var enc = {};
+                for (var m in raw) {
+                    if (raw.hasOwnProperty(m)) {
+                        enc[m] = encrypt(raw[m]);
+                    }
+                }
+                raw = null;
+
+                function fromBase64(str) {
+                    var binary = atob(str);
+                    var bytes = [];
+                    for (var i = 0; i < binary.length; i++) {
+                        bytes.push(binary.charCodeAt(i));
+                    }
+                    return bytes;
+                }
+
+                function xorDecrypt(byteArray) {
+                    var chars = [];
+                    for (var i = 0; i < byteArray.length; i++) {
+                        chars.push(String.fromCharCode(byteArray[i] ^ key[i % key.length]));
+                    }
+                    return chars.join('');
+                }
+
+                function getDecrypted(method) {
+                    if (!enc[method]) return null;
+                    return xorDecrypt(fromBase64(enc[method]));
+                }
+
+                return {
+                    getUrl: getDecrypted,
+                    hasMethod: function(m) { return !!enc[m]; },
+                    methods: function() { return Object.keys(enc); }
+                };
+            })();
+
+            // ================================================================
+            // STAR BACKGROUND
+            // ================================================================
+            function createStars(elementId, count, size) {
+                var el = document.getElementById(elementId);
+                if (!el) return;
+                var shadows = '';
+                for (var i = 0; i < count; i++) {
+                    var x = Math.floor(Math.random() * window.innerWidth);
+                    var y = Math.floor(Math.random() * 2000);
+                    shadows += x + 'px ' + y + 'px #FFF' + (i < count - 1 ? ', ' : '');
+                }
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+                el.style.background = 'transparent';
+                el.style.boxShadow = shadows;
+
+                var style = document.createElement('style');
+                style.textContent = '#' + elementId + '::after { content: " "; position: absolute; top: 2000px; width: ' + size + 'px; height: ' + size + 'px; background: transparent; box-shadow: ' + shadows + '; }';
+                document.head.appendChild(style);
+            }
+
+            // ================================================================
+            // SOUND EFFECTS
+            // ================================================================
+            function playClickSound() {
+                try {
+                    var AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    var ctx = new AudioCtx();
+                    var osc = ctx.createOscillator();
+                    var gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(850, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.5, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                    osc.start(ctx.currentTime);
+                    osc.stop(ctx.currentTime + 0.1);
+                } catch(e) {}
+            }
+
+            // ================================================================
+            // PAYMENT HANDLER
+            // ================================================================
+            function handlePayment(method) {
+                playClickSound();
+
+                var url = null;
+                try {
+                    url = CONFIG.getUrl(method);
+                } catch(e) {}
+
+                if (url) {
+                    var loader = document.getElementById('loader');
+                    if (loader) loader.classList.add('active');
+
+                    // Synchronous redirect keeps user gesture active for native app deep-linking
+                    window.location.href = url;
+                } else {
+                    alert('មិនទាន់បានកំណត់តំណទូទាត់ប្រាក់នៅឡើយទេ។');
+                }
+            }
+
+            window.handlePayment = handlePayment;
+
+            // ================================================================
+            // ATTACH EVENT LISTENERS
+            // ================================================================
+            document.addEventListener('DOMContentLoaded', function() {
+                var cards = document.querySelectorAll('.card');
+                for (var i = 0; i < cards.length; i++) {
+                    (function(card) {
+                        card.addEventListener('click', function(e) {
+                            var method = card.getAttribute('data-method');
+                            if (method && window.handlePayment) {
+                                window.handlePayment(method);
+                            }
+                        });
+                    })(cards[i]);
+                }
+
+                // Initialize background stars
+                createStars('stars', 100, 1);
+                createStars('stars2', 50, 2);
+                createStars('stars3', 20, 3);
+            });
+
+        })();
+    </script>
+</body>
+</html>
